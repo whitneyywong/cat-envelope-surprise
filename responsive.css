@@ -1,0 +1,154 @@
+/* =============================================
+   RESPONSIVE & CROSS-SYSTEM ADAPTATIONS
+   Handles mobile, tablet, desktop, and accessibility
+   ============================================= */
+
+/* Base mobile-first adjustments */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .scene {
+    width: 340px;
+    height: 230px;
+    transform: scale(0.95); /* Slight scale down for very small screens */
+  }
+
+  .envelope,
+  .flap {
+    width: 340px;
+    height: 210px;
+  }
+
+  /* Smaller note */
+  .note {
+    width: 280px;
+    font-size: 13px;
+    padding: 14px;
+  }
+
+  /* Adjust cat positions for smaller screens */
+  .cat-sitting,
+  .cat-jumping {
+    left: 20px;
+    bottom: 40px;
+  }
+
+  .cat-emoji {
+    font-size: 70px;
+  }
+
+  .arrow-label {
+    left: 120px;
+    bottom: 100px;
+  }
+
+  .open-me-text {
+    font-size: 12px;
+  }
+
+  /* Reduce 3D intensity on small screens for better performance */
+  .scene {
+    perspective: 800px;
+  }
+
+  /* Make tap targets bigger */
+  .scene {
+    min-height: 260px;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 481px) and (max-width: 1024px) {
+  .scene {
+    width: 380px;
+    height: 260px;
+  }
+
+  .envelope,
+  .flap {
+    width: 380px;
+    height: 240px;
+  }
+
+  .note {
+    width: 310px;
+  }
+
+  .cat-sitting,
+  .cat-jumping {
+    left: 30px;
+  }
+}
+
+/* Large desktop / wide screens */
+@media (min-width: 1025px) {
+  .scene {
+    width: 460px;
+    height: 300px;
+  }
+
+  .envelope,
+  .flap {
+    width: 460px;
+    height: 280px;
+  }
+
+  .note {
+    width: 360px;
+    font-size: 15px;
+  }
+
+  /* Stronger 3D effect on big screens */
+  .scene {
+    perspective: 1200px;
+  }
+}
+
+/* Landscape orientation tweaks (phones & tablets) */
+@media (orientation: landscape) and (max-height: 500px) {
+  body {
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+
+  .cat-sitting,
+  .cat-jumping {
+    bottom: 30px;
+  }
+
+  .arrow-label {
+    bottom: 80px;
+  }
+}
+
+/* Accessibility: Respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .cat-jumping div,
+  .arrow,
+  .wax-seal {
+    animation: none !important;
+  }
+
+  .scene.open .flap,
+  .note.revealed {
+    transition: none;
+  }
+
+  /* Still allow basic open/close but without fancy effects */
+  .confetti-piece {
+    display: none;
+  }
+}
+
+/* High contrast / dark mode improvements (optional enhancement) */
+@media (prefers-color-scheme: dark) {
+  /* Your base dark theme already matches well, but you can fine-tune here if needed */
+}
