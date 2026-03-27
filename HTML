@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Envelope - Open Me 💌</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- SITTING CAT -->
+  <div class="cat-sitting" id="catSitting">
+    <div class="cat-emoji">🐱</div>
+  </div>
+
+  <!-- JUMPING CAT -->
+  <div class="cat-jumping" id="catJumping">
+    <div class="cat-emoji">🐈</div>
+  </div>
+
+  <!-- ARROW + LABEL -->
+  <div class="arrow-label" id="arrowLabel">
+    <span class="open-me-text">open me</span>
+    <span class="arrow">➔</span>
+  </div>
+
+  <!-- ENVELOPE SCENE -->
+  <div class="scene" id="scene">
+    <div class="note" id="note">
+      📬 You've got a message!
+      <div class="video-wrapper" id="videoWrapper">
+        <video id="noteVideo" loop playsinline>
+          <source src="assets/video.mp4" type="video/mp4">
+        </video>
+        <div class="thumbnail-overlay" id="thumbOverlay">
+          <img class="thumb" src="assets/thumbnail.png" alt="Video thumbnail">
+          <div class="play-btn"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="envelope">
+      <div class="env-left"></div>
+      <div class="env-right"></div>
+    </div>
+
+    <div class="wax-seal" id="waxSeal">🔱</div>
+    <div class="flap"></div>
+    <div class="hint">click to open</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
