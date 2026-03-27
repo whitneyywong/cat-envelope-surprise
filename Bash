@@ -1,0 +1,25 @@
+# 1. Create the project folder
+mkdir envelope-cat-love-letter
+cd envelope-cat-love-letter
+
+# 2. Create the assets folder
+mkdir assets
+
+# 3. Create the files (you can use any editor, or echo for quick start)
+# Paste the index.html code into index.html using your code editor
+# Paste the README.md code into README.md
+
+# 4. Initialize Git and make commits
+git init
+git add .
+git commit -m "Initial commit: Add interactive envelope animation with jumping cat 💌🐱"
+
+# Optional: Add placeholder commit for assets folder
+git add assets/
+git commit -m "Add assets folder for video and thumbnail"
+
+# 5. Create the repo on GitHub (go to github.com/new), name it `envelope-cat-love-letter`
+# Then link and push:
+git remote add origin https://github.com/YOUR_USERNAME/envelope-cat-love-letter.git
+git branch -M main
+git push -u origin main
