@@ -1,0 +1,375 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #1a1a2e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Georgia', serif;
+  overflow: hidden;
+}
+
+/* ---------- CAT STYLES ---------- */
+.cat-sitting {
+  position: fixed;
+  left: 40px;
+  bottom: 60px;
+  animation: fadeIn 1s ease forwards;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 20;
+}
+
+.cat-sitting.hide {
+  opacity: 0;
+  transform: translateX(-60px);
+  pointer-events: none;
+}
+
+.cat-jumping {
+  position: fixed;
+  left: 40px;
+  bottom: 60px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.cat-jumping.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cat-emoji {
+  font-size: 90px;
+  line-height: 1;
+  animation: jumpLoop 0.7s ease-in-out infinite alternate;
+  display: inline-block;
+}
+
+@keyframes jumpLoop {
+  from { transform: translateY(0px); }
+  to   { transform: translateY(-18px); }
+}
+
+/* ---------- ARROW + LABEL ---------- */
+.arrow-label {
+  position: fixed;
+  left: 160px;
+  bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  animation: fadeIn 1.4s ease forwards;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 20;
+}
+
+.arrow-label.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.open-me-text {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: #f0d080;
+  letter-spacing: 2px;
+}
+
+.arrow {
+  font-size: 26px;
+  color: #f0d080;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(8px); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* ---------- SCENE ---------- */
+.scene {
+  position: relative;
+  width: 420px;
+  height: 280px;
+  cursor: pointer;
+  animation: fadeIn 1.2s ease forwards;
+  opacity: 0;
+  perspective: 1000px;
+}
+
+/* ---------- NOTE ---------- */
+.note {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30px;
+  width: 340px;
+  background: #fffdf4;
+  border-radius: 6px;
+  padding: 16px;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  color: #3a2a1a;
+  line-height: 1.8;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  z-index: 1;
+  opacity: 0;
+  transition: bottom 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+  pointer-events: none;
+  text-align: center;
+}
+
+.note.revealed {
+  bottom: 260px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ---------- VIDEO PLAYER ---------- */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  display: none;
+  cursor: pointer;
+}
+
+.note.revealed .video-wrapper {
+  display: block;
+}
+
+.video-wrapper video {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+}
+
+.thumbnail-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: opacity 0.3s;
+}
+
+.thumbnail-overlay img.thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  z-index: 0;
+}
+
+.play-btn {
+  position: relative;
+  z-index: 1;
+  width: 52px;
+  height: 52px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  transition: transform 0.2s;
+}
+
+.play-btn:hover {
+  transform: scale(1.1);
+}
+
+.play-btn::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 18px solid #1a1a2e;
+  margin-left: 4px;
+}
+
+.thumbnail-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- WAX SEAL ---------- */
+.wax-seal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 10;
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle at 35% 35%, #c0392b, #7b0000);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 0 0 4px #8b0000,
+              0 4px 16px rgba(0,0,0,0.5),
+              inset 0 2px 4px rgba(255,255,255,0.15);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+}
+
+.wax-seal::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: #8b0000;
+  border-radius: 50% 50% 60% 60%;
+}
+
+.scene.open .wax-seal {
+  transform: translate(-50%, -50%) scale(0) rotate(30deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- ENVELOPE BODY ---------- */
+.envelope {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 420px;
+  height: 260px;
+  background: #f5f0e8;
+  border-radius: 6px;
+  z-index: 2;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.55);
+}
+
+.envelope::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 210px solid #ddd0b8;
+  border-right: 210px solid #ddd0b8;
+  border-top: 130px solid transparent;
+}
+
+.env-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 210px solid #e8dcc8;
+  border-top: 260px solid transparent;
+}
+
+.env-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-right: 210px solid #e2d6c0;
+  border-top: 260px solid transparent;
+}
+
+/* ---------- FLAP ---------- */
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 420px;
+  height: 150px;
+  transform-origin: top center;
+  transform: rotateX(0deg);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 6;
+}
+
+.flap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 210px solid transparent;
+  border-right: 210px solid transparent;
+  border-top: 150px solid #e8dcc8;
+  filter: drop-shadow(0 6px 8px rgba(0,0,0,0.2));
+}
+
+.scene.open .flap {
+  transform: rotateX(-180deg);
+}
+
+/* ---------- HINT ---------- */
+.hint {
+  position: absolute;
+  bottom: -30px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #888;
+  letter-spacing: 1px;
+  transition: opacity 0.4s;
+}
+
+.scene.open .hint {
+  opacity: 0;
+}
+
+/* ---------- SEAL POP ANIMATION ---------- */
+@keyframes sealPop {
+  0%   { transform: translate(-50%, -50%) scale(0) rotate(-20deg); opacity: 0; }
+  60%  { transform: translate(-50%, -50%) scale(1.15) rotate(5deg); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 1; }
+}
+
+.wax-seal.popped {
+  animation: sealPop 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ---------- CONFETTI ---------- */
+.confetti-piece {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
+  animation: confettiFall 1.4s ease-in forwards;
+}
+
+@keyframes confettiFall {
+  0%   { opacity: 1; transform: translateY(0) rotate(0deg); }
+  100% { opacity: 0; transform: translateY(300px) rotate(720deg); }
+}
