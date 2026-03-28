@@ -1,23 +1,31 @@
-# 💌 Envelope Cat Love Letter
+# 💌 Cat Envelope Surprise 
 
-A super cute interactive envelope animation built with pure HTML, CSS, and JavaScript.
+A delightful **interactive envelope** that feels like opening a real love letter!
 
-Click the envelope → wax seal pops → flap opens → note rises with your video → happy jumping cat appears with confetti explosion!
+Click the envelope → the wax seal pops → the flap opens with smooth 3D animation → a secret note slides up with your video → a happy jumping cat appears with a burst of confetti!
 
-## ✨ Features
-- Beautiful 3D-style envelope with realistic flap
-- Animated wax seal with pop effect
-- Sitting cat → jumping cat transition
-- Confetti burst on open
-- Clickable video player with custom thumbnail & play button
-- Fully responsive
+Perfect for sending digital surprises, love letters, birthdays, or just to make someone smile. 💕
 
-## 🚀 How to Run
-1. Download or clone the repo
-2. Put your `video.mp4` and `thumbnail.png` inside the `assets/` folder
-3. Open `index.html` in your browser
+## ✨ Why You'll Love It
+- Realistic CSS 3D envelope flap (`perspective` + `rotateX`)
+- Animated wax seal with satisfying pop effect
+- Sitting cat → excited jumping cat transition
+- Colorful confetti explosion
+- Clean custom video player with thumbnail & play button
+- Fully responsive (mobile, tablet, desktop)
+- Accessibility-friendly (`prefers-reduced-motion` support)
 
-## Live Demo
-(After enabling GitHub Pages: https://yourusername.github.io/envelope-cat-love-letter)
+## 🚀 Super Easy to Clone & Run
 
-Made for fun love letters, surprises, birthdays, or just because 🐱💕
+Getting started takes less than 1 minute:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/YOUR_USERNAME/cat-envelope-surprise.git
+
+# 2. Go into the folder
+cd cat-envelope-surprise
+
+# 3. Open the file
+open index.html    # On macOS
+# or simply double-click index.html in your file explorer
